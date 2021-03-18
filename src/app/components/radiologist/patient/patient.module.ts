@@ -31,8 +31,17 @@ import { SharedModule } from 'src/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PatientComponent } from './patient.component';
 
+import { UploadDetailsComponent } from './patient-details/components/upload-details/upload-details.component';
+import { UploadListComponent } from './patient-details/components/upload-list/upload-list.component';
+import { UploadFormComponent } from './patient-details/components/upload-form/upload-form.component';
+
 @NgModule({
   declarations: [
+    //Upload Images
+    UploadFormComponent,
+    UploadListComponent,
+    UploadDetailsComponent,
+    //Upload Images end
     PatientTableComponent,
     PatientDetailsComponent,
     PatientComponent,

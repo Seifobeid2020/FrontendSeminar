@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "id": "1000",
+      "cost": 65,
+      "typeOfXRayImage": "Panorama",
+      "dateOfCreate": "2020-02-09",
+      "imageURl": "https://www.imagesource.com/wp-content/uploads/2019/06/Rio.jpg",
+      "imageName": "AI.png"
+    }
+  ]
+}

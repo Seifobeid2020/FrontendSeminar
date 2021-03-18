@@ -22,3 +22,20 @@
     {{ patientDetails.phoneNumber }}
   </div>
 </div>
+
+<div class="container" style="width: 600px">
+  <div>
+    <h4>
+      Patient Name is
+      {{ patientDetails.firstName + " " + patientDetails.lastName }}
+    </h4>
+  </div>
+
+  <div class="my-3">
+    <app-upload-form></app-upload-form>
+  </div>
+
+  <div class="my-2">
+    <app-upload-list></app-upload-list>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+import { FileUpload } from 'src/shared/FileUpload';
+import { FileUploadService } from 'src/shared/file-upload.service';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-upload-form',
+  templateUrl: './upload-form.component.html',
+  styleUrls: ['./upload-form.component.css'],
+})
+export class UploadFormComponent implements OnInit {
+  selectedFiles?: FileList;
+  currentFileUpload?: FileUpload;
+  percentage = 0;
+
+  constructor(
+    private uploadService: FileUploadService,
+    private route: ActivatedRoute
+  ) {}
+
+  userId: number;
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => (this.userId = params['id']));
+  }
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+  }
+  upload(): void {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = undefined;
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.currentFileUpload.id = this.userId;
+        this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
+          (percentage) => {
+            this.percentage = Math.round(percentage ? percentage : 0);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
+    }
+  }
+}
